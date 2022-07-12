@@ -1,7 +1,0 @@
-apply from: "../../gradle/jpa-common.gradle"
-
-dependencies {
-  implementation "$boot:spring-boot-starter-security"
-
-//  testRuntime("com.h2database:h2")
-}
