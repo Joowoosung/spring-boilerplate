@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+  <appender class="ch.qos.logback.core.rolling.RollingFileAppender"
+      name="dailyRollingFileAppender">
+    <encoder>
+      <pattern>%d{yyyy:MM:dd HH:mm:ss.SSS} %-5level --- [%thread] %logger{35} : %msg %n</pattern>
+    </encoder>
+    <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+      <level>INFO</level>
+    </filter>
+    <prudent>true</prudent>
+
+    <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+      <fileNamePattern>/root/logs/direct_calc_%d{yyyy-MM-dd}.log</fileNamePattern>
+      <maxHistory>30</maxHistory>
+    </rollingPolicy>
+  </appender>
+
+  <include resource="org/springframework/boot/logging/logback/base.xml"/>
+
+  <logger level="ERROR" name="org.springframework.web"/>
+  <logger level="OFF" name="org.springframework.web.SimpLogging"/>
+
+  <logger level="ERROR" name="org.hibernate"/>
+  <logger level="ERROR" name="com.zaxxer.hikari.HikariDataSource"/>
+
+  <logger level="ERROR" name="org.springframework.web.socket.config.WebSocketMessageBrokerStats"/>
+
+  <logger level="WARN" name="jdbc"/>
+  <logger level="WARN" name="jdbc.sqlonly"/>
+  <logger level="WARN" name="jdbc.sqltiming"/>
+  <logger level="WARN" name="jdbc.audit"/>
+  <logger level="WARN" name="jdbc.resultset"/>
+  <logger level="WARN" name="jdbc.resultsettable"/>
+  <logger level="WARN" name="jdbc.connection"/>
+
+  <!-- TRACE > DEBUG > INFO > WARN > ERROR, 대소문자 구분 안함 -->
+  <!-- profile 을 읽어서 appender 을 설정할수 있다.(phase별 파일을 안만들어도 되는 좋은 기능) -->
+  <root level="INFO">
+    <appender-ref ref="dailyRollingFileAppender"/>
+  </root>
+</configuration>

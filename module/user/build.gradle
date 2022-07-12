@@ -1,0 +1,8 @@
+apply from: "../../gradle/server-common.gradle"
+
+dependencies {
+  implementation project(":module-common")
+//  implementation project(":module-coin")
+  implementation "$boot:spring-boot-starter-security"
+  implementation "com.auth0:java-jwt:3.16.0"  // oauth0
+}

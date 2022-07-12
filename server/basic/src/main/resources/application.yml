@@ -1,0 +1,54 @@
+spring:
+  application.name: SpringBoilerPlate
+  profiles.active: local
+  #  main.allow-bean-definition-overriding: true
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    type: com.zaxxer.hikari.HikariDataSource
+    connection-properties: autoReconnect=true;useCompression=true;useUnicode=true;characterEncoding=utf8;zeroDateTimeBehavior=convertToNull;allowMultiQueries=true
+    #    connection-properties: autoReconnect=true;useCompression=true;useUnicode=true;characterEncoding=utf8;zeroDateTimeBehavior=convertToNull;allowMultiQueries=true
+    hikari:
+      minimum-idle: 10
+      maximum-pool-size: 3000
+      pool-name: Hikari
+      data-source-properties:
+        cachePrepStmts: true
+        prepStmtCacheSize: 250
+        prepStmtCacheSqlLimit: 2048
+        useServerPrepStmts: true
+        useLocalSessionState: true
+        rewriteBatchedStatements: true
+        cacheResultSetMetadata: true
+        cacheServerConfiguration: true
+        elideSetAutoCommits: true
+        maintainTimeStats: false
+  #      connection-test-query: SELECT 1
+  #      max-lifetime: 20000
+  #      idle-timeout: 10000
+  #      connection-timeout: 10000
+  #      validation-timeout: 10000
+  jpa:
+    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
+    #    hibernate.ddl-auto: create-drop
+    hibernate:
+      ddl-auto: update
+    generate-ddl: true
+    database: MYSQL
+    hibernate.naming-strategy: org.hibernate.cfg.ImprovedNamingStrategy
+    #    properties.hibernate.dialect: com.copycat_web.settings.database.MariaDbDialect
+    open-in-view: false
+  cache:
+    type: redis
+  servlet:
+    multipart:
+      enabled: true
+      file-size-threshold: 2KB
+      max-file-size: 200MB
+      max-request-size: 215MB
+
+server:
+  servlet:
+    encoding:
+      charset: UTF-8
+      enabled: true
+      force: true

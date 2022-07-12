@@ -1,0 +1,8 @@
+apply from: "$rootDir/gradle/common.gradle"
+
+dependencies {
+  implementation "com.zaxxer:HikariCP:2.7.1"
+  runtimeOnly "mysql:mysql-connector-java"
+
+  developmentOnly "com.googlecode.log4jdbc:log4jdbc:1.2"
+}
